@@ -52,5 +52,4 @@ public class AppointmentController {
         return new ResponseEntity<>(appointment1,HttpStatus.CREATED);
 
     }
-
 }

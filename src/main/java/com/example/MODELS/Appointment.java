@@ -1,6 +1,9 @@
 package com.example.MODELS;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import org.springframework.data.jpa.repository.query.Procedure;
 
 import javax.persistence.*;
@@ -20,6 +23,8 @@ public class Appointment {
     @ManyToOne(cascade = CascadeType.ALL)
     private SomeService someService;
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonFormat(pattern="dd/MM/yyyy hh:mm")
     private LocalDateTime localDateTime;
 
     public Appointment() {
