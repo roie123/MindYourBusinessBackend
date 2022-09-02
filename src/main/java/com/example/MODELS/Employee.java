@@ -68,9 +68,9 @@ public void addAppointment(Appointment appointment){
         this.allowedProceduresToPerform = allowedProceduresToPerform;
     }
 
-    public Set<Appointment> getAppointments() {
-        return appointments;
-    }
+//    public Set<Appointment> getAppointments() {
+//        return appointments;
+//    }
 
     public void setAppointments(Set<Appointment> appointments) {
         this.appointments = appointments;
