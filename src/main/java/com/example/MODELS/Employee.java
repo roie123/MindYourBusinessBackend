@@ -28,24 +28,27 @@ public class Employee {
         return position;
     }
 
-    public void setPosition(String position) {
+    public Employee setPosition(String position) {
         this.position = position;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public Employee setEmail(String email) {
         this.email = email;
+        return this;
     }
 
     public Set<Appointment> getAppointments() {
         return appointments;
     }
 
-    public void addAppointment(Appointment appointment){
+    public Employee addAppointment(Appointment appointment){
         this.appointments.add(appointment);
+        return this;
 }
     public void addAllowedService(SomeService someService){
         this.allowedProceduresToPerform.add(someService);
@@ -63,40 +66,44 @@ public class Employee {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public Employee setFirstName(String firstName) {
+        this.firstName = firstName; return  this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public Employee setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
     }
 
     public int getYearsOfExperience() {
         return yearsOfExperience;
     }
 
-    public void setYearsOfExperience(int yearsOfExperience) {
+    public Employee setYearsOfExperience(int yearsOfExperience) {
         this.yearsOfExperience = yearsOfExperience;
+        return this;
     }
 
     public Set<SomeService> getAllowedProceduresToPerform() {
         return allowedProceduresToPerform;
     }
 
-    public void setAllowedProceduresToPerform(Set<SomeService> allowedProceduresToPerform) {
+    public Employee setAllowedProceduresToPerform(Set<SomeService> allowedProceduresToPerform) {
         this.allowedProceduresToPerform = allowedProceduresToPerform;
+        return this;
     }
 
 //    public Set<Appointment> getAppointments() {
 //        return appointments;
 //    }
 
-    public void setAppointments(Set<Appointment> appointments) {
+    public Employee setAppointments(Set<Appointment> appointments) {
         this.appointments = appointments;
+        return this;
     }
 
     public Long getId() {

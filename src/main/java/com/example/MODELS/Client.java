@@ -36,32 +36,35 @@ public class Client {
         this.procedureSet = procedureSet;
     }
 
-    public void setFirstName(String firstName) {
+    public Client setFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public Client setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public Client setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;return this;
     }
 
     public Set<SomeService> getProcedureSet() {
         return procedureSet;
     }
 
-    public void setProcedureSet(Set<SomeService> procedureSet) {
+    public Client setProcedureSet(Set<SomeService> procedureSet) {
         this.procedureSet = procedureSet;
+        return this;
     }
 
     public Long getId() {

@@ -13,7 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @CrossOrigin
@@ -49,10 +51,26 @@ public class AppointmentController {
         appointment1.setEmployee(employee);
         appointment1.setSomeService(someService);
         appointmentService.addAppointment(appointment1);
-
         return new ResponseEntity<>(appointment1,HttpStatus.CREATED);
-
     }
+
+    @PostMapping(path = "/add_random")
+    public ResponseEntity<Appointment> addRandomAppointment(){
+        Appointment appointment =new Appointment();
+        Random random =new Random();
+
+        LocalDateTime localDateTime=LocalDateTime.now();
+        appointment.setEmployee(employeeService.findRandomEmployee());
+        appointment.setClient(clientService.findRandomClient());
+        appointment.setSomeService(someServiceService.findRandomService());
+        appointment.setLocalDateTime(localDateTime.plusDays(random.nextInt(3,45)).plusHours(random.nextInt(20))); //RANDOM DATE AND TIME
+        appointmentService.addAppointment(appointment);
+        return new ResponseEntity<Appointment>(appointment,HttpStatus.CREATED);
+    }
+
+
+    //TODO make a randomizer for appointments
+
 }
 
 

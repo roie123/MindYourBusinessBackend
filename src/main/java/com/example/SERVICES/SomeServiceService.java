@@ -38,4 +38,9 @@ public class SomeServiceService { ///HAHAHAHAH FUNNY
     } ///FIND BY ID
 
 
+    public SomeService findRandomService(){
+        return someServiceRepo.findRandomService();
+    }
+
+
 }

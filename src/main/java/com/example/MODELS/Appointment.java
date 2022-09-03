@@ -43,32 +43,35 @@ public class Appointment {
         this.localDateTime = localDateTime;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public Appointment setClient(Client client) {
+        this.client = client; return this;
     }
 
     public Employee getEmployee() {
         return employee;
     }
 
-    public void setEmployee(Employee employee) {
+    public Appointment setEmployee(Employee employee) {
         this.employee = employee;
+        return this;
     }
 
     public SomeService getSomeService() {
         return someService;
     }
 
-    public void setSomeService(SomeService someService) {
+    public Appointment setSomeService(SomeService someService) {
         this.someService = someService;
+        return this;
     }
 
     public LocalDateTime getLocalDateTime() {
         return localDateTime;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
+    public Appointment setLocalDateTime(LocalDateTime localDateTime) {
         this.localDateTime = localDateTime;
+        return this;
     }
 
     public Long getId() {

@@ -36,7 +36,9 @@ public class EmployeeService {
         return employeeRepo.findById(id).orElseThrow();
     } ///FIND BY ID
 
-
+public Employee findRandomEmployee(){
+        return  employeeRepo.findRandomEmployee();
+}
 
 
 }

@@ -38,4 +38,7 @@ public class ClientService {
         return clientRepo.findById(id).orElseThrow();
     } ///FIND BY ID
 
+    public Client findRandomClient(){
+        return clientRepo.findRandomClient();
+    }
 }

@@ -1,14 +1,17 @@
 package com.example.CONTROLLERS;
 
+import com.example.CONTROLLERS.RANDOMIZE.RandomFirstNames;
+import com.example.CONTROLLERS.RANDOMIZE.RandomLastNames;
+import com.example.CONTROLLERS.RANDOMIZE.RandomPositions;
 import com.example.MODELS.Employee;
 import com.example.MODELS.SomeService;
 import com.example.SERVICES.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @CrossOrigin
@@ -60,4 +63,22 @@ public class EmployeeController {
         employeeService.updateEmployee(employee);
         return new ResponseEntity<>(employee,HttpStatus.OK);
 }
+
+@PostMapping(path = "/add_random")
+    public ResponseEntity<Employee> addRandomEmployee() {
+    Random random =new Random();
+    RandomPositions randomPositions =new RandomPositions();
+    randomPositions.fillPositions();
+    Employee employee1 = new Employee();
+
+    employee1.setFirstName(RandomFirstNames.values()[random.nextInt(0,RandomFirstNames.values().length)].toString());
+    employee1.setLastName(RandomLastNames.values()[random.nextInt(0,RandomLastNames.values().length)].toString());
+    employee1.setEmail(employee1.getFirstName()+"_"+employee1.getLastName()+"@gmail.com");
+    employee1.setPosition(randomPositions.getRandomPosition());
+    employee1.setYearsOfExperience(random.nextInt(0,15));
+    employeeService.addEmployee(employee1);
+    return new ResponseEntity<>(employee1, HttpStatus.CREATED);
+}
+
+
 }
