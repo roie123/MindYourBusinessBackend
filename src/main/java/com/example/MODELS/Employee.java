@@ -15,13 +15,36 @@ public class Employee {
     private int yearsOfExperience;
     @OneToMany(cascade = CascadeType.ALL)
     private Set<SomeService> allowedProceduresToPerform=new HashSet<>();
+    private String position;
+    private String email;
 
     @OneToMany(cascade = CascadeType.ALL)
     Set<Appointment> appointments =new HashSet<>();
 
     public Employee() {
     }
-public void addAppointment(Appointment appointment){
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void addAppointment(Appointment appointment){
         this.appointments.add(appointment);
 }
     public void addAllowedService(SomeService someService){
