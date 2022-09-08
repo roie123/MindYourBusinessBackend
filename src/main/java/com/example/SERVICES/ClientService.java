@@ -1,6 +1,5 @@
 package com.example.SERVICES;
 
-import com.example.MODELS.Appointment;
 import com.example.MODELS.Client;
 import com.example.REPOSITORIES.ClientRepo;
 import org.springframework.beans.factory.annotation.Autowired;

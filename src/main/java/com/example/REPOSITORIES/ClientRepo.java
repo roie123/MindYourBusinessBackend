@@ -1,7 +1,6 @@
 package com.example.REPOSITORIES;
 
 import com.example.MODELS.Client;
-import com.example.MODELS.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

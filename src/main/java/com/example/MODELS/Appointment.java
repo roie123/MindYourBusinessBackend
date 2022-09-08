@@ -4,7 +4,6 @@ package com.example.MODELS;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import org.springframework.data.jpa.repository.query.Procedure;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

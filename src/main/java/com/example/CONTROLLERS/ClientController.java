@@ -2,7 +2,6 @@ package com.example.CONTROLLERS;
 
 import com.example.CONTROLLERS.RANDOMIZE.RandomFirstNames;
 import com.example.CONTROLLERS.RANDOMIZE.RandomLastNames;
-import com.example.CONTROLLERS.RANDOMIZE.RandomPositions;
 import com.example.MODELS.Client;
 import com.example.SERVICES.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
