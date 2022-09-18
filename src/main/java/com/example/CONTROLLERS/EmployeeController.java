@@ -52,7 +52,7 @@ public class EmployeeController {
 
  @DeleteMapping(path = "delete/{id}")
  public ResponseEntity<Employee> deleteEmployeeById(@PathVariable("id") Long id){
-     Employee employee = employeeService.findById(id);
+     employeeService.deleteEmployee(id);
      return new ResponseEntity<>(HttpStatus.OK);
  }
 
@@ -70,7 +70,6 @@ public class EmployeeController {
     RandomPositions randomPositions =new RandomPositions();
     randomPositions.fillPositions();
     Employee employee1 = new Employee();
-
     employee1.setFirstName(RandomFirstNames.values()[random.nextInt(0,RandomFirstNames.values().length)].toString());
     employee1.setLastName(RandomLastNames.values()[random.nextInt(0,RandomLastNames.values().length)].toString());
     employee1.setEmail(employee1.getFirstName()+"_"+employee1.getLastName()+"@gmail.com");
