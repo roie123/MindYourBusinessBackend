@@ -3,6 +3,7 @@ package com.example.CONTROLLERS;
 import com.example.CONTROLLERS.RANDOMIZE.RandomFirstNames;
 import com.example.CONTROLLERS.RANDOMIZE.RandomLastNames;
 import com.example.CONTROLLERS.RANDOMIZE.RandomPositions;
+import com.example.MODELS.Client;
 import com.example.MODELS.Employee;
 import com.example.MODELS.SomeService;
 import com.example.SERVICES.EmployeeService;
@@ -40,7 +41,9 @@ public class EmployeeController {
 
  @PostMapping(path = "/add")
     public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
+        employee.setActive(true);
         Employee employee1 = employeeService.addEmployee(employee);
+
         return new ResponseEntity<>(employee,HttpStatus.CREATED);
  }
 
@@ -79,5 +82,30 @@ public class EmployeeController {
     return new ResponseEntity<>(employee1, HttpStatus.CREATED);
 }
 
+    @PutMapping(path = "/remove")
+    public ResponseEntity<Employee> deactivateEmployee(@RequestBody Employee employee){
+        employee.setActive(false);
+        employeeService.updateEmployee(employee);
+        return new ResponseEntity<Employee>(employee,HttpStatus.OK);
+    }
+
+
+
+    @GetMapping(path = "/all/active")
+    public ResponseEntity<List<Employee>> getActiveEmployees(){
+        List<Employee> employees = employeeService.findActiveEmployees();
+        return new ResponseEntity<>(employees,HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/all/removed")
+    public ResponseEntity<List<Employee>> getRemovedEmployees(){
+        List<Employee> employees = employeeService.findRemovedEmployees();
+        return new ResponseEntity<>(employees,HttpStatus.OK);
+    }
+    @GetMapping(path = "/find_by_name/{first_name}/{last_name}")
+    public ResponseEntity<List<Employee>> getByName(@PathVariable("first_name")String firstName,@PathVariable("last_name")String lastName){
+    List<Employee> employees = employeeService.getEmplyeeeByName(firstName,lastName);
+    return new ResponseEntity<List<Employee>>(employees,HttpStatus.OK);
+    }
 
 }

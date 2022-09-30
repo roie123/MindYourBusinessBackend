@@ -13,10 +13,31 @@ public class Employee {
     private String firstName;
     private String lastName;
     private int yearsOfExperience;
+    private boolean isActive;
     @OneToMany(cascade = CascadeType.ALL)
     private Set<SomeService> allowedProceduresToPerform=new HashSet<>();
     private String position;
     private String email;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public Employee(Long id, String firstName, String lastName, int yearsOfExperience, boolean isActive, Set<SomeService> allowedProceduresToPerform, String position, String email, Set<Appointment> appointments) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.yearsOfExperience = yearsOfExperience;
+        this.isActive = isActive;
+        this.allowedProceduresToPerform = allowedProceduresToPerform;
+        this.position = position;
+        this.email = email;
+        this.appointments = appointments;
+    }
 
     @OneToMany(cascade = CascadeType.ALL)
     Set<Appointment> appointments =new HashSet<>();

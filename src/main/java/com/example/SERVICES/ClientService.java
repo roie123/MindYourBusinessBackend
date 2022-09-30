@@ -20,16 +20,21 @@ public class ClientService {
     public Client addClient(Client client){   //////////// ADD
         return clientRepo.save(client);
     } //////ADD
-
-    public List<Client> findAllClients(){
+public List<Client> findAllClients(){
         return clientRepo.findAll();
+}
+    public List<Client> findActiveClients(){
+        return clientRepo.findActiveClients();
     }  //////GET ALL
 
+    public List<Client> findRemovedClients(){
+        return clientRepo.findRemovedClients();
+    }
     public Client updateClient(Client client){
         return clientRepo.save(client);
     } //////UPDATE Client
 
-    public void deleteAppointment(Long id){
+    public void deleteClient(Long id){
         clientRepo.deleteById(id);
     } //////DELETE BY ID
 

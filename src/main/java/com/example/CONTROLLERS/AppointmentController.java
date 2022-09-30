@@ -53,6 +53,7 @@ public class AppointmentController {
         appointmentService.addAppointment(appointment1);
         return new ResponseEntity<>(appointment1,HttpStatus.CREATED);
     }
+//TODO => make the "add" request to be from names, add a query for finding by name with an exeption, maybe only on the employee and not on the client ? to make it more dynamic by not adding every single client.
 
     @PostMapping(path = "/add_random")
     public ResponseEntity<Appointment> addRandomAppointment(){
@@ -69,7 +70,7 @@ public class AppointmentController {
     }
 
 
-    //TODO make a randomizer for appointments
+
 
 }
 

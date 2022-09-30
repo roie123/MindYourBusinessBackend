@@ -13,6 +13,7 @@ public class Client {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    private boolean isActive;
     @OneToMany
     private Set<SomeService> procedureSet=new HashSet<>();
 
@@ -26,12 +27,23 @@ public class Client {
     public void addAppointment(Appointment appointment){
 
     }
-    public Client(Long id, String firstName, String lastName, String phoneNumber, Set<SomeService> procedureSet) {
+
+    public Client(Long id, String firstName, String lastName, String phoneNumber, boolean isActive, Set<SomeService> procedureSet) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.isActive = isActive;
         this.procedureSet = procedureSet;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public Client setActive(boolean active) {
+        isActive = active;
+        return this;
     }
 
     public Client setFirstName(String firstName) {
