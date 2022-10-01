@@ -30,10 +30,17 @@ public class SomeServiceController {
     @PostMapping(path = "/add/{employeeId}")
     public ResponseEntity<SomeService> addSomeService(@RequestBody SomeService someService,@PathVariable("employeeId") Long employeeId){
         someService.setEmployee(employeeService.findById(employeeId));
+        someService.setActive(true);
         SomeService someService1 = someServiceService.addSomeService(someService);
 
         return new ResponseEntity<SomeService>(someService1,HttpStatus.CREATED);
     }
 
-
+    @PutMapping(path = "/remove/{id}")
+    public ResponseEntity<SomeService> remove(@PathVariable("id")Long id){
+        SomeService someService =someServiceService.findById(id);
+        someService.setActive(false);
+        someServiceService.updateService(someService);
+        return new ResponseEntity<SomeService>(someService,HttpStatus.OK);
+    }
 }

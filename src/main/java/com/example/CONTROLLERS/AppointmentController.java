@@ -82,7 +82,19 @@ public class AppointmentController {
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
+    @PutMapping(path = "/update")
+    public ResponseEntity<Appointment> updateAppointment(@RequestBody Appointment appointment) {
+        Appointment appointment1 = appointmentService.updateAppointment(appointment);
+        return new ResponseEntity<>(appointment1, HttpStatus.OK);
+    }
 
+    @PutMapping(path = "/completed_appointment/{id}")
+    public ResponseEntity<Appointment> completedAppointment(@PathVariable("id") Long id){
+        Appointment appointment=appointmentService.findById(id);
+        appointment.setCompleted(true);
+        appointmentService.updateAppointment(appointment);
+        return new ResponseEntity<Appointment>(appointment,HttpStatus.OK);
+    }
 
 
 }

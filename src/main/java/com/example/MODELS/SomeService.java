@@ -8,7 +8,8 @@ public class SomeService {
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-//
+
+    private boolean isActive;
     private String name;
     private int durationInMinutes;
 
@@ -22,6 +23,14 @@ public class SomeService {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public SomeService(Long id, String name, int durationInMinutes, Employee employee, int price) {
