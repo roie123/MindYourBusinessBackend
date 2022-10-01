@@ -41,8 +41,9 @@ public class AppointmentController {
         return new ResponseEntity<>(appointments, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/add/{clientId}/{employeeId}/{someServiceId}")
-        public ResponseEntity<Appointment> scheduleAppointment(@PathVariable("clientId") Long clientId,@PathVariable("employeeId") Long employeeId,@PathVariable("someServiceId") Long someServiceId){
+    @PostMapping(path = "/add/{clientId}/{employeeId}/{someServiceId}/{hour}/{minute}/{day}/{month}/{year}")
+        public ResponseEntity<Appointment> scheduleAppointment(@PathVariable("clientId") Long clientId,@PathVariable("employeeId") Long employeeId,@PathVariable("someServiceId") Long someServiceId,
+        @PathVariable("hour") Long hour,@PathVariable("minute")Long minute,@PathVariable("day")Long day,@PathVariable("month")Long month,@PathVariable("year")Long year){
         Appointment appointment1= new Appointment();
         Client client = clientService.findById(clientId);
         Employee employee =employeeService.findById(employeeId);
@@ -50,6 +51,12 @@ public class AppointmentController {
         appointment1.setClient(client);
         appointment1.setEmployee(employee);
         appointment1.setSomeService(someService);
+        try {
+            appointment1.setLocalDateTime(LocalDateTime.of(Math.toIntExact(year), Math.toIntExact(month), Math.toIntExact(day), Math.toIntExact(hour), Math.toIntExact(minute)));
+
+        }catch (Exception e){
+            return new ResponseEntity<Appointment>(HttpStatus.BAD_REQUEST);
+        }
         appointmentService.addAppointment(appointment1);
         return new ResponseEntity<>(appointment1,HttpStatus.CREATED);
     }
@@ -69,6 +76,12 @@ public class AppointmentController {
         return new ResponseEntity<Appointment>(appointment,HttpStatus.CREATED);
     }
 
+    @DeleteMapping(path = "/delete/{id}")
+    public ResponseEntity<Appointment> deleteAppointment(@PathVariable("id") Long id){
+        this.appointmentService.deleteAppointment(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+
+    }
 
 
 
