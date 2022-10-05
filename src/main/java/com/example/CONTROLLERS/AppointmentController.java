@@ -27,6 +27,7 @@ public class AppointmentController {
     private final EmployeeService employeeService;
     private final SomeServiceService someServiceService;
 
+
     @Autowired
     public AppointmentController(AppointmentService appointmentService, EmployeeService employeeService, ClientService clientService, EmployeeService employeeService1, SomeServiceService someServiceService) {
         this.appointmentService = appointmentService;
@@ -39,6 +40,11 @@ public class AppointmentController {
     public ResponseEntity<List<Appointment>> findAllAppointment(){
         List<Appointment> appointments =appointmentService.findAllAppointment();
         return new ResponseEntity<>(appointments, HttpStatus.OK);
+    }
+    @GetMapping(path = "/completed")
+    public ResponseEntity<List<Appointment>> getCompleted(){
+        List<Appointment> appointments =appointmentService.findCompletedAppointment();
+        return new ResponseEntity<>(appointments,HttpStatus.OK);
     }
 
     @PostMapping(path = "/add/{clientId}/{employeeId}/{someServiceId}/{hour}/{minute}/{day}/{month}/{year}")
@@ -95,6 +101,8 @@ public class AppointmentController {
         appointmentService.updateAppointment(appointment);
         return new ResponseEntity<Appointment>(appointment,HttpStatus.OK);
     }
+
+
 
 
 }

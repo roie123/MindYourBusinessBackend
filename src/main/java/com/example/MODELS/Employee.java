@@ -18,6 +18,15 @@ public class Employee {
     private Set<SomeService> allowedProceduresToPerform=new HashSet<>();
     private String position;
     private String email;
+    public int salary;
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
 
     public boolean isActive() {
         return isActive;

@@ -22,7 +22,15 @@ public class AppointmentService {
     public Appointment addAppointment(Appointment appointment) {   //////////// ADD
         return appointmentRepo.save(appointment);
     } //////ADD
-
+public List<Appointment> findCompletedAppointment(){
+        List<Appointment> appointments = appointmentRepo.findAll().stream().filter(new Predicate<Appointment>() {
+            @Override
+            public boolean test(Appointment appointment) {
+              return   appointment.isCompleted();
+            }
+        }).collect(Collectors.toList());
+        return appointments;
+}
     public List<Appointment> findAllAppointment() {
         List<Appointment> appointments = appointmentRepo.findAll().stream().filter(new Predicate<Appointment>() {
             @Override

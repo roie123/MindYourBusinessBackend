@@ -23,7 +23,7 @@ public class SomeServiceController {
 
     @GetMapping(path = "/all")
     public ResponseEntity<List<SomeService>> getAll(){
-        List<SomeService> someServiceList = someServiceService.findAllServices();
+        List<SomeService> someServiceList = someServiceService.findAllActiveServices();
         return new ResponseEntity<>(someServiceList, HttpStatus.OK);
     }
 

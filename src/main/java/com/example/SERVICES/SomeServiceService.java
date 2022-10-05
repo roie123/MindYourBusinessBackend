@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Service
 public class SomeServiceService { ///HAHAHAHAH FUNNY
@@ -23,7 +25,14 @@ public class SomeServiceService { ///HAHAHAHAH FUNNY
     public List<SomeService> findAllServices(){
         return someServiceRepo.findAll();
     }  //////GET ALL
-
+    public List<SomeService> findAllActiveServices(){
+        return someServiceRepo.findAll().stream().filter(new Predicate<SomeService>() {
+            @Override
+            public boolean test(SomeService someService) {
+                return someService.isActive();
+            }
+        }).collect(Collectors.toList());
+    }
     public SomeService updateService(SomeService someService){
         return someServiceRepo.save(someService);
     } //////UPDATE EMPLOYEE
